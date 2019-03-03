@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '!'
 
-const discord_token = "NTUxNjMyNjkzNDkwNjE0Mjgz.D1z5Zg._kvvRVlQAvZ_Y8Sp7VuKx0PLp0g";
+const discord_token = "NTUxNjMyNjkzNDkwNjE0Mjgz.D1z6hg.Kv0hJiQPn2Nka0tKjsj5sog55RM";
 client.login(discord_token);
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
