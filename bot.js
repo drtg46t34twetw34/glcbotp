@@ -28,7 +28,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.content === '!glc') {
-    	message.channel.send('Gamers Life Community);
+    	message.channel.send('Gamers Life Community');
   	}
 });
 
