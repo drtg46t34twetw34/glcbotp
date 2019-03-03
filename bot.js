@@ -1,14 +1,19 @@
 const Discord = require('discord.js');
+const EventEmitter = require('events');
+const emitter = new EventEmitter()
+require('events').EventEmitter.defaultMaxListeners = 15;
+
+const queue = new Map();
+const fs = require('fs');
 const client = new Discord.Client();
 const prefix = '!'
 
-const discord_token = "NTUxNjQxNTcxMDgzMjg4NTk2.D1z7zw.3JVRPks-TdsKc1Jw3hQUN-KqbTg";
-client.login(discord_token);
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
 
 
 });
+
 
 
 
