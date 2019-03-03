@@ -8,7 +8,7 @@ const fs = require('fs');
 const client = new Discord.Client();
 const prefix = '!'
 
-const discord_token = "Mzg1ODA3ODkxNDQ3MTUyNjQw.Dyl57g.wopT3QKmSIjgydI0moeoE2tQA5M";
+const discord_token = "NTUxNjMyNjkzNDkwNjE0Mjgz.D1z0Cw.aJ3IjtIfrVjKOpNWZrOnTxAHZ9Y";
 client.login(discord_token);
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
@@ -23,9 +23,9 @@ client.on('ready', () => {
     client.user.setStatus('available')
     client.user.setPresence({
         game: {
-            name: 'AGS',
+            name: 'GamersLifeCommunity',
             type: "Streaming",
-            url: "https://www.twitch.tv/omarjxh"
+            url: "https://www.twitch.tv/dangerrpg1"
         }
     });
   
@@ -33,27 +33,16 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-    if (message.content === '!ags') {
-    	message.channel.send('visit https://ArabGS.com');
+    if (message.content === '!glc') {
+    	message.channel.send('Gamers Life Community);
   	}
 });
 
 
 
 
-client.on('message', message => {
-    const swearWords = ["سلام عليكم","السلام عليكم"];
-    if( swearWords.some(word => message.content.includes(word)) ) {
-
-	     message.react('👋');
-        message.reply('وعليكم السلام ورحمة الله وبركاته');
-      }
-});
-
-
-
 client.on('message', function(message) {
-    if (message.content == "!ags-clear") {
+    if (message.content == "!g_clear") {
         if (message.member.hasPermission("ADMINISTRATOR")) {
             message.channel.fetchMessages()
                .then(function(list){
@@ -80,7 +69,7 @@ client.on('message', msg => {
   command = command.slice(prefix.length);
   let args = msg.content.split(" ").slice(1);
 
-    if(command === "ags-delete") {
+    if(command === "g-delete") {
         const emoji = client.emojis.find("name", "wastebasket")
     let textxt = args.slice(0).join("");
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
@@ -97,60 +86,6 @@ client.on('message', msg => {
 }
 }); 
 
-client.on('guildMemberRemove', member => {
-        var embed = new Discord.RichEmbed()
-        .setAuthor(member.user.username, member.user.avatarURL)
-        .setThumbnail(member.user.avatarURL)
-        .addField('▪| ' , `  ${member}`)
-        .setDescription(`Member Left `)
-        .setColor('RED')
-     .setFooter("Arab Gaming Society ▪ AGS")
-        .setTimestamp()	 
-    var channel =member.guild.channels.find('name', 'join-left')
-    if (!channel) return;
-    channel.send({embed : embed});
-    }) 
-	
-
-	client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'join-left');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return;
-    let embed = new Discord.RichEmbed()
-	    .setAuthor(member.user.username, member.user.avatarURL)
-	    .addField('▪| ' , `  ${member}`)
-        .setColor('#070707')
-        .setThumbnail(memberavatar)
-         .setDescription(`Member join `)
-        .setColor('RED')
-     .setFooter("Arab Gaming Society ▪ AGS")
-        .setTimestamp()
-      channel.sendEmbed(embed);
-    }); 
-	
-	
-
-	
-
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'welcome');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return;
-    let embed = new Discord.RichEmbed()
-        .setColor('#070707')
-        .setThumbnail(memberavatar)
-        .addField('▪| Welcome To AGS ' , ` أهلاً بك في مجتمعك `)
-                .addField('▪| انت العضو رقم',`${member.guild.memberCount}`)
-       //.addField('▪| invited by' , ` ${Invite.inviter} ;`)
-        .addField('▪| ' , `  ${member}`)
-                  .addField("▪| مجتمع الألعاب العربي",  `https://ArabGS.com` , true)
-                     
-                                       
-     .setFooter("Arab Gaming Society ▪ AGS")
-        .setTimestamp()
-      channel.sendEmbed(embed);
-    }); 
-
 
 
 client.on('message', message => {
@@ -166,88 +101,16 @@ client.on('message', message => {
 
 });
 
-client.on('message', message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "ags-say") {
-message.guild.channels.find("name", "chat").sendMessage(args.join("  "))
-   message.delete()
-  }
-});
-
-
-client.on('message', message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "ags-say-ags_news") {
-message.guild.channels.find("name", "ags_news").sendMessage(args.join("  "))
-   message.delete()
-  }
-});
-
-
-client.on('message', message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "ags-say-news") {
-message.guild.channels.find("name", "news").sendMessage(args.join("  "))
-   message.delete()
-  }
-});
-
-
-
-
-client.on('message', message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "ags-say-events") {
-message.guild.channels.find("name", "ags-events").sendMessage(args.join("  "))
-   message.delete()
-  }
-});
-
 
 	client.on("guildMemberAdd", function(member) {
-    let role = member.guild.roles.find("name", "🏅 Members ▪ AGS"); 
+    let role = member.guild.roles.find("name", "! P L A Y E R S"); 
     member.addRole(role).catch(console.error);
 });
 
 
-client.on('message', message => {
-    const swearWords = ["🖕", "💩","NNNNNNNNNNNNNNNN ","VVVVVVVVVVVVVVVVVVV"];
-    if( swearWords.some(word => message.content.includes(word)) ) {
-        message.delete();
-      }
-}); 
-
 client.on("message", message => {
 
-            if (message.content.startsWith(prefix + "ags-bc-p")) {
+            if (message.content.startsWith(prefix + "g-bc-p")) {
                          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' '); 
@@ -259,135 +122,9 @@ client.on("message", message => {
 };     
 });
 
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("379533459938607113");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        });
-    });
-});
-
-
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("379613215027363840");
-    if (!channel) {
-        console.log("!the channel id it's not correct");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('-');
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("379533459938607113");
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
-                    setTimeout(function() {
- client.channels.find("name","welcome").send(`**invited by** ${Invite.inviter} `)
- 
-                    },1500);
- }
-            dat[Inv] = Invite.uses;
-       
-       });
-    });
-});
-
-
-
-client.on("presenceUpdate", (oldMember, newMember) => {
-  let guild = newMember.guild;
-  let playRole = guild.roles.find("name", "Playing Apex Legends Now");
-  if(!playRole) return;  
- 
-  if(newMember.user.presence.game && newMember.user.presence.game.name === "Apex Legends") {
-    newMember.addRole(playRole);
-  } else if(!newMember.user.game && newMember.roles.has(playRole.id)) {
-    newMember.removeRole(playRole);
-  let guild = newMember.guild;
-  if(!playRole) return;
-    
-  }  
-});
-client.on("presenceUpdate", (oldMember, newMember) => {
-  let guild = newMember.guild;
-  let playRole = guild.roles.find("name", "Playing PUBG Now");
-  if(!playRole) return;  
- 
-  if(newMember.user.presence.game && newMember.user.presence.game.name === "PLAYERUNKNOWN'S BATTLEGROUNDS") {
-    newMember.addRole(playRole);
-  } else if(!newMember.user.game && newMember.roles.has(playRole.id)) {
-    newMember.removeRole(playRole);
-  let guild = newMember.guild;
-  if(!playRole) return;
-    
-  }  
-});
-client.on("presenceUpdate", (oldMember, newMember) => {
-  let guild = newMember.guild;
-  let playRole = guild.roles.find("name", "Playing Fortnite Now");
-  if(!playRole) return;  
- 
-  if(newMember.user.presence.game && newMember.user.presence.game.name === "Fortnite") {
-    newMember.addRole(playRole);
-  } else if(!newMember.user.game && newMember.roles.has(playRole.id)) {
-    newMember.removeRole(playRole);
-  let guild = newMember.guild;
-  if(!playRole) return;
-    
-  }  
-});
-
-
-
-client.on('messageUpdate', (message, newMessage) => {
-    if (message.content === newMessage.content) return;
-    if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-    const channel = message.guild.channels.find("name","edit-delete");
-    if (!channel) return;
-
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-       .setColor('SILVER')
-       .setDescription(`✏ **massege edited
-by <@${message.author.id}>              Edited in channel ** <#${message.channel.id}>\n\n before edited:\n \`${message.cleanContent}\`\n\n after edited:\n \`${newMessage.cleanContent}\``)
-       .setTimestamp();
-     channel.send({embed:embed});
-
-
-});
-
-
-client.on("messageDelete", (messageDelete) => {
-
-    if (messageDelete.author.bot) return;
-
-      
-    const channel = messageDelete.guild.channels.find("name", `edit-delete`);
-    if (!channel) return;
-    let embed = new Discord.RichEmbed()
-        .setTitle("Deleted Message:")
-        .setColor("RANDOM")
-        .setThumbnail(messageDelete.author.displayAvatarURL)
-        .setDescription(`**Message sent by:**  ${messageDelete.author.tag} **Was Deleted in** ${messageDelete.channel}\n${messageDelete.content}`)
-        .setTimestamp()
-     channel.send({embed : embed});
-});
 
 client.on('message', message => {
-if(message.content.startsWith(prefix + 'ags-moveall')) {
+if(message.content.startsWith(prefix + 'g-moveall')) {
  if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**لايوجد لديك صلاحية سحب الأعضاء**');
    if(!message.guild.member(client.user).hasPermission("MOVE_MEMBERS")) return message.reply("**لايوجد لدي صلاحية السحب**");
 if (message.member.voiceChannel == null) return message.channel.send(`**الرجاء الدخول لروم صوتي**`)
