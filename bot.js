@@ -1,10 +1,4 @@
 const Discord = require('discord.js');
-const EventEmitter = require('events');
-const emitter = new EventEmitter()
-require('events').EventEmitter.defaultMaxListeners = 15;
-
-const queue = new Map();
-const fs = require('fs');
 const client = new Discord.Client();
 const prefix = '!'
 
